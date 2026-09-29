@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="R Dharshin — BCA Student, aspiring developer and problem solver.">
+<title>R Dharshin — Digital Portfolio</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap');
+
+:root{
+  --ink:#101828;
+  --muted:#667085;
+  --paper:#f8faff;
+  --white:#ffffff;
+  --line:#e8ecf3;
+  --violet:#7257ff;
+  --blue:#3c82f6;
+  --cyan:#22c7d9;
+  --pink:#ef70c2;
+  --soft-violet:#f1efff;
+  --soft-blue:#edf5ff;
+  --dark:#0c1224;
+  --shadow:0 24px 70px rgba(22,35,75,.12);
+  --radius:24px;
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:"DM Sans",sans-serif;
+  color:var(--ink);
+  background:
+    radial-gradient(circle at 84% 8%, rgba(114,87,255,.12), transparent 22%),
+    radial-gradient(circle at 6% 42%, rgba(34,199,217,.08), transparent 18%),
+    var(--paper);
+  line-height:1.6;
+}
+a{text-decoration:none;color:inherit}
+img{max-width:100%}
+.container{width:min(1160px,92%);margin:auto}
+
+/* Header */
+.header{
+  position:sticky;top:0;z-index:1000;
+  background:rgba(248,250,255,.86);
+  backdrop-filter:blur(18px);
+  border-bottom:1px solid rgba(232,236,243,.8);
+}
+.header-inner{
+  height:78px;display:flex;align-items:center;justify-content:space-between;
+}
+.brand{
+  display:flex;align-items:center;gap:12px;
+  font-family:"Manrope",sans-serif;font-weight:800;font-size:20px;letter-spacing:-.8px;
+}
+.brand-mark{
+  width:38px;height:38px;border-radius:12px;
+  background:linear-gradient(135deg,var(--violet),var(--blue));
+  color:white;display:grid;place-items:center;
+  box-shadow:0 9px 24px rgba(78,96,225,.25);
+}
+.brand span{color:var(--violet)}
+.nav{display:flex;gap:28px;align-items:center}
+.nav a{
+  font-size:13px;font-weight:700;color:#5e6b82;
+  position:relative;padding:8px 0;
+}
+.nav a:after{
+  content:"";position:absolute;left:0;bottom:0;width:0;height:2px;
+  border-radius:2px;background:linear-gradient(90deg,var(--violet),var(--blue));
+  transition:.25s;
+}
+.nav a:hover{color:var(--ink)}
+.nav a:hover:after{width:100%}
+.nav-cta{
+  padding:11px 16px;border-radius:12px;background:#11182d;color:#fff!important;
+  box-shadow:0 8px 18px rgba(12,18,36,.14);
+}
+.nav-cta:after{display:none}
+.menu{display:none;border:0;background:transparent;font-size:24px}
+
+/* Hero */
+.hero{padding:96px 0 86px}
+.hero-grid{
+  display:grid;grid-template-columns:1.1fr .9fr;gap:70px;align-items:center;
+}
+.hero-pill{
+  display:inline-flex;align-items:center;gap:9px;
+  border:1px solid #dfe3ff;background:#f5f3ff;color:#5845da;
+  padding:8px 12px;border-radius:999px;font-size:12px;font-weight:800;
+  letter-spacing:.4px;margin-bottom:20px;
+}
+.hero-pill i{width:8px;height:8px;background:#5fcf87;border-radius:50%}
+.hero h1{
+  font-family:"Manrope",sans-serif;
+  font-size:clamp(50px,7vw,84px);
+  line-height:1.02;letter-spacing:-4px;
+  max-width:760px;
+}
+.hero h1 em{
+  font-style:normal;
+  background:linear-gradient(90deg,var(--violet),var(--blue),var(--cyan));
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.hero-lead{
+  max-width:660px;color:var(--muted);font-size:18px;margin:22px 0 28px;
+}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap}
+.btn{
+  padding:13px 18px;border-radius:13px;font-size:14px;font-weight:800;
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  transition:.25s;
+}
+.btn-primary{
+  color:#fff;background:linear-gradient(135deg,var(--violet),var(--blue));
+  box-shadow:0 14px 32px rgba(84,94,220,.24);
+}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 18px 38px rgba(84,94,220,.3)}
+.btn-light{
+  border:1px solid var(--line);background:#fff;color:#27324a;
+}
+.btn-light:hover{border-color:#cbd2ff;color:var(--violet);transform:translateY(-2px)}
+
+.hero-meta{display:flex;gap:26px;margin-top:32px;flex-wrap:wrap}
+.meta-item strong{display:block;font-family:"Manrope",sans-serif;font-size:18px}
+.meta-item span{font-size:12px;color:#8a95a8}
+
+/* Visual */
+.visual{position:relative}
+.visual-card{
+  min-height:510px;border-radius:34px;overflow:hidden;position:relative;
+  background:
+    radial-gradient(circle at 18% 22%, rgba(255,255,255,.7), transparent 25%),
+    radial-gradient(circle at 82% 18%, rgba(109,84,255,.3), transparent 26%),
+    linear-gradient(145deg,#141b37,#0e1530 55%,#102a43);
+  box-shadow:0 35px 90px rgba(20,31,72,.22);
+}
+.visual-card:before{
+  content:"";position:absolute;inset:18px;border:1px solid rgba(255,255,255,.12);
+  border-radius:25px;
+}
+.visual-orb{
+  position:absolute;border-radius:50%;filter:blur(1px);
+}
+.orb1{width:170px;height:170px;right:-20px;top:-30px;background:rgba(83,120,255,.22)}
+.orb2{width:120px;height:120px;left:-40px;bottom:60px;background:rgba(34,199,217,.16)}
+.profile{
+  position:absolute;inset:78px 56px auto;
+  display:flex;justify-content:center;
+}
+.profile-ring{
+  width:280px;height:280px;border-radius:50%;
+  border:1px solid rgba(255,255,255,.18);
+  background:radial-gradient(circle,#f2f5ff 0 56%,#d7dcf4 57% 100%);
+  box-shadow:0 25px 50px rgba(0,0,0,.25);
+  display:grid;place-items:center;
+}
+.profile-ring svg{width:245px;height:245px}
+.visual-tag{
+  position:absolute;display:flex;gap:10px;align-items:center;
+  background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);
+  color:#eef2ff;border-radius:14px;padding:11px 13px;backdrop-filter:blur(10px);
+  font-size:12px;font-weight:700;
+}
+.tag1{left:28px;top:56px}
+.tag2{right:24px;bottom:124px}
+.tag3{left:54px;bottom:46px}
+.tag-dot{width:9px;height:9px;border-radius:50%;background:linear-gradient(135deg,var(--pink),var(--violet))}
+
+.visual-footer{
+  position:absolute;left:52px;right:52px;bottom:27px;
+  display:flex;justify-content:space-between;align-items:center;
+  color:#dbe1f1;font-size:11px
+}
+.visual-footer span:last-child{color:#8e9ab4}
+
+/* Sections */
+section{padding:92px 0}
+.section-top{display:flex;justify-content:space-between;align-items:end;gap:30px;margin-bottom:36px}
+.kicker{font-size:11px;font-weight:900;color:var(--violet);letter-spacing:1.7px;text-transform:uppercase}
+.section-top h2{
+  font-family:"Manrope",sans-serif;font-size:42px;line-height:1.08;letter-spacing:-1.9px;margin-top:8px;
+}
+.section-top p{max-width:540px;color:var(--muted);font-size:15px}
+
+/* About */
+.about-grid{display:grid;grid-template-columns:1fr .92fr;gap:22px}
+.about-main,.about-side{
+  background:#fff;border:1px solid var(--line);border-radius:var(--radius);
+  box-shadow:0 12px 40px rgba(27,40,79,.055);
+}
+.about-main{padding:34px}
+.about-main p{color:var(--muted);font-size:16px;margin-bottom:15px}
+.about-main p:last-child{margin-bottom:0}
+.about-highlights{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:28px}
+.highlight{
+  padding:16px;border:1px solid var(--line);border-radius:16px;background:#fbfcff;
+}
+.highlight b{display:block;font-family:"Manrope",sans-serif;font-size:20px}
+.highlight span{font-size:11px;color:#8290a6}
+.about-side{padding:26px}
+.info-row{display:flex;gap:14px;padding:16px 0;border-bottom:1px solid var(--line)}
+.info-row:last-child{border-bottom:0}
+.info-icon{
+  width:42px;height:42px;border-radius:13px;
+  background:linear-gradient(135deg,#f3f0ff,#eaf6ff);
+  display:grid;place-items:center;color:var(--violet);font-weight:900;
+}
+.info-row small{display:block;text-transform:uppercase;letter-spacing:1px;color:#97a0b1;font-size:10px;font-weight:900}
+.info-row strong{font-size:14px}
+
+/* Skills */
+.skills-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:15px}
+.skill{
+  position:relative;background:white;border:1px solid var(--line);border-radius:19px;
+  padding:24px 17px;overflow:hidden;transition:.25s;
+}
+.skill:before{
+  content:"";position:absolute;left:0;right:0;top:0;height:3px;
+  background:linear-gradient(90deg,var(--violet),var(--blue),var(--cyan));
+  transform:scaleX(0);transform-origin:left;transition:.25s
+}
+.skill:hover{transform:translateY(-7px);box-shadow:var(--shadow);border-color:#d9def0}
+.skill:hover:before{transform:scaleX(1)}
+.skill-symbol{
+  width:52px;height:52px;border-radius:15px;
+  background:linear-gradient(135deg,#f1efff,#eef8ff);
+  display:grid;place-items:center;color:#5e4de4;font-family:"Manrope",sans-serif;font-weight:800;font-size:18px;
+}
+.skill h3{font-size:15px;margin-top:16px}
+.skill p{font-size:12px;color:#8490a3;margin-top:3px}
+
+/* Projects */
+.projects-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:19px}
+.project{
+  background:white;border:1px solid var(--line);border-radius:22px;
+  overflow:hidden;transition:.25s;
+}
+.project:hover{transform:translateY(-8px);box-shadow:var(--shadow);border-color:#d8def2}
+.project-cover{
+  height:130px;padding:18px;position:relative;overflow:hidden;
+  background:linear-gradient(135deg,#f2efff,#ebf7ff);
+}
+.project-cover:before,.project-cover:after{
+  content:"";position:absolute;border-radius:50%;filter:blur(2px)
+}
+.project-cover:before{width:130px;height:130px;background:rgba(114,87,255,.22);right:-28px;top:-50px}
+.project-cover:after{width:110px;height:110px;background:rgba(34,199,217,.16);left:-35px;bottom:-65px}
+.project-no{position:relative;z-index:2;font-size:11px;font-weight:900;color:#667085}
+.project-mini{
+  position:absolute;right:18px;bottom:15px;z-index:2;
+  padding:7px 9px;border-radius:10px;background:rgba(255,255,255,.78);
+  border:1px solid rgba(255,255,255,.85);font-size:11px;font-weight:900;color:#5e4de4;
+}
+.project-body{padding:24px}
+.project h3{font-family:"Manrope",sans-serif;font-size:20px;letter-spacing:-.5px}
+.project p{font-size:13px;color:var(--muted);margin-top:9px}
+.tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:18px}
+.tag{font-size:10px;font-weight:800;color:#59657b;background:#f5f7fa;padding:6px 8px;border-radius:8px}
+
+/* Journey */
+.journey{
+  display:grid;grid-template-columns:.45fr 1.55fr;gap:32px;align-items:stretch
+}
+.journey-number{
+  background:#10182d;border-radius:24px;padding:34px;color:#fff;position:relative;overflow:hidden
+}
+.journey-number:after{
+  content:"";position:absolute;width:170px;height:170px;border:1px solid rgba(255,255,255,.08);
+  border-radius:50%;right:-70px;bottom:-70px
+}
+.journey-number .big{
+  font-family:"Manrope",sans-serif;font-size:90px;line-height:.9;
+  background:linear-gradient(135deg,#fff,#aebfff);
+  -webkit-background-clip:text;background-clip:text;color:transparent
+}
+.journey-number p{color:#99a4bb;font-size:13px;margin-top:16px;max-width:200px}
+.timeline{display:grid;gap:14px}
+.timeline-item{
+  background:white;border:1px solid var(--line);border-radius:18px;padding:19px 20px;
+  display:grid;grid-template-columns:80px 1fr;gap:20px
+}
+.timeline-item time{font-size:11px;font-weight:900;color:var(--violet);letter-spacing:.8px}
+.timeline-item h3{font-size:15px}
+.timeline-item p{font-size:12px;color:var(--muted);margin-top:3px}
+
+/* Contact */
+.contact{
+  border-radius:30px;padding:48px;
+  background:
+    radial-gradient(circle at 82% 22%,rgba(114,87,255,.26),transparent 27%),
+    radial-gradient(circle at 20% 80%,rgba(34,199,217,.13),transparent 26%),
+    #0e162b;
+  color:#fff;position:relative;overflow:hidden;
+}
+.contact:before{
+  content:"";position:absolute;inset:18px;border:1px solid rgba(255,255,255,.08);border-radius:22px
+}
+.contact-grid{position:relative;z-index:2;display:grid;grid-template-columns:1.2fr .8fr;gap:45px;align-items:center}
+.contact .kicker{color:#9f91ff}
+.contact h2{font-family:"Manrope",sans-serif;font-size:42px;line-height:1.08;letter-spacing:-1.8px;margin-top:8px}
+.contact p{color:#aeb9cf;max-width:560px;margin-top:12px}
+.contact-list{display:grid;gap:10px}
+.contact-item{
+  border:1px solid rgba(255,255,255,.10);background:rgba(255,255,255,.045);
+  border-radius:13px;padding:13px 15px;font-size:13px;color:#e7ebf7
+}
+.contact .btn-light{background:#fff;color:#10182d;border-color:#fff;margin-top:22px}
+
+/* Footer */
+footer{padding:30px 0 42px;color:#8a95a8;font-size:12px}
+.footer-inner{display:flex;justify-content:space-between;gap:20px;align-items:center}
+.footer-mark{font-family:"Manrope",sans-serif;font-weight:800;color:#43506a}
+
+/* Responsive */
+@media(max-width:900px){
+  .nav{display:none}
+  .menu{display:block;color:#28334b}
+  .hero-grid,.about-grid,.journey,.contact-grid{grid-template-columns:1fr}
+  .visual{max-width:600px;margin:auto;width:100%}
+  .skills-grid{grid-template-columns:repeat(2,1fr)}
+  .projects-grid{grid-template-columns:1fr}
+  .section-top{display:block}
+  .section-top p{margin-top:10px}
+}
+@media(max-width:560px){
+  .hero{padding-top:62px}
+  .hero h1{font-size:47px;letter-spacing:-2.5px}
+  .hero-lead{font-size:16px}
+  section{padding:70px 0}
+  .profile{inset:82px 28px auto}
+  .profile-ring{width:240px;height:240px}
+  .profile-ring svg{width:210px;height:210px}
+  .visual-card{min-height:450px}
+  .tag1{left:15px}.tag2{right:12px}.tag3{left:25px}
+  .skills-grid{grid-template-columns:1fr 1fr}
+  .about-highlights{grid-template-columns:1fr}
+  .contact{padding:32px 22px}
+  .contact h2{font-size:34px}
+  .footer-inner{display:block}
+  .footer-mark{margin-bottom:5px}
+  .timeline-item{grid-template-columns:1fr;gap:5px}
+}
+</style>
+</head>
+
+<body>
+
+<header class="header">
+  <div class="container header-inner">
+    <a href="#home" class="brand"><span class="brand-mark">RD</span>R Dharshin<span>.</span></a>
+    <nav class="nav">
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#journey">Journey</a>
+      <a class="nav-cta" href="#contact">Let's Talk</a>
+    </nav>
+    <button class="menu" aria-label="Menu" onclick="toggleNav()">☰</button>
+  </div>
+</header>
+
+<main id="home">
+
+<section class="hero">
+  <div class="container hero-grid">
+    <div>
+      <div class="hero-pill"><i></i> BCA STUDENT · ASPIRING DEVELOPER</div>
+      <h1>Building ideas into <em>digital experiences.</em></h1>
+      <p class="hero-lead">
+        I'm R Dharshin — a BCA student passionate about programming, web design,
+        databases and practical problem solving. I enjoy learning by building and
+        turning simple concepts into useful projects.
+      </p>
+
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#projects">Explore My Work ↗</a>
+        <a class="btn btn-light" href="mailto:bca2641@rajagiri.edu">Email Me</a>
+      </div>
+
+      <div class="hero-meta">
+        <div class="meta-item"><strong>03+</strong><span>Academic Projects</span></div>
+        <div class="meta-item"><strong>05</strong><span>Core Skills</span></div>
+        <div class="meta-item"><strong>100%</strong><span>Learning Mindset</span></div>
+      </div>
+    </div>
+
+    <div class="visual">
+      <div class="visual-card">
+        <div class="visual-orb orb1"></div>
+        <div class="visual-orb orb2"></div>
+
+        <div class="visual-tag tag1"><span class="tag-dot"></span> Coding & Problem Solving</div>
+        <div class="visual-tag tag2"><span class="tag-dot"></span> UI / UX Basics</div>
+        <div class="visual-tag tag3"><span class="tag-dot"></span> Always Learning</div>
+
+        <div class="profile">
+          <div class="profile-ring">
+            <svg viewBox="0 0 250 250" aria-label="Illustrated profile">
+              <circle cx="125" cy="85" r="43" fill="#f7f8fb" stroke="#7257ff" stroke-width="2"/>
+              <path d="M82 80 Q88 36 125 40 Q162 36 168 80 Q154 58 143 63 Q125 70 104 59 Q96 74 82 80Z" fill="#d7dced" stroke="#7257ff" stroke-width="2"/>
+              <circle cx="109" cy="88" r="3.2" fill="#101828"/><circle cx="141" cy="88" r="3.2" fill="#101828"/>
+              <path d="M115 104 Q125 112 135 104" fill="none" stroke="#101828" stroke-width="2"/>
+              <path d="M84 150 Q125 122 166 150 L178 230 L72 230Z" fill="#f5f6fa" stroke="#7257ff" stroke-width="2"/>
+              <path d="M103 140 L125 164 L147 140" fill="none" stroke="#3c82f6" stroke-width="2"/>
+              <path d="M125 164 L125 198" stroke="#3c82f6" stroke-width="2"/>
+            </svg>
+          </div>
+        </div>
+
+        <div class="visual-footer">
+          <span>R DHARSHIN · PORTFOLIO 2026</span>
+          <span>EDAPPALLY, KERALA</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="container">
+    <div class="section-top">
+      <div><div class="kicker">01 — PROFILE</div><h2>A student with a builder's mindset.</h2></div>
+      <p>Focused on learning the fundamentals well, creating practical projects and developing a strong foundation for the tech industry.</p>
+    </div>
+
+    <div class="about-grid">
+      <article class="about-main">
+        <p>I'm a BCA student who enjoys turning ideas into real projects. I am curious, dedicated and eager to explore new technologies.</p>
+        <p>My current interests include programming, databases, responsive web design and creating simple user experiences that feel clear and useful.</p>
+        <p>Every project is a chance for me to improve my technical skills, strengthen my problem-solving approach and understand how technology can solve practical problems.</p>
+
+        <div class="about-highlights">
+          <div class="highlight"><b>Curious</b><span>Always exploring new concepts</span></div>
+          <div class="highlight"><b>Practical</b><span>Learning through real projects</span></div>
+          <div class="highlight"><b>Creative</b><span>Interested in clean interfaces</span></div>
+          <div class="highlight"><b>Focused</b><span>Building a strong tech foundation</span></div>
+        </div>
+      </article>
+
+      <aside class="about-side">
+        <div class="info-row"><div class="info-icon">⌖</div><div><small>Location</small><strong>Edappally, Kerala</strong></div></div>
+        <div class="info-row"><div class="info-icon">✉</div><div><small>Email</small><strong>bca2641@rajagiri.edu</strong></div></div>
+        <div class="info-row"><div class="info-icon">⌑</div><div><small>Education</small><strong>BCA Student</strong></div></div>
+        <div class="info-row"><div class="info-icon">↗</div><div><small>Career Interest</small><strong>Software & Web Development</strong></div></div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="container">
+    <div class="section-top">
+      <div><div class="kicker">02 — CAPABILITIES</div><h2>Tools I am building with.</h2></div>
+      <p>A balanced mix of programming fundamentals, data skills and visual design basics.</p>
+    </div>
+
+    <div class="skills-grid">
+      <div class="skill"><div class="skill-symbol">&lt;/&gt;</div><h3>C Programming</h3><p>Logic & Fundamentals</p></div>
+      <div class="skill"><div class="skill-symbol">Py</div><h3>Python</h3><p>Application Basics</p></div>
+      <div class="skill"><div class="skill-symbol">DB</div><h3>SQL</h3><p>Data & Queries</p></div>
+      <div class="skill"><div class="skill-symbol">WEB</div><h3>Web Design</h3><p>HTML & CSS</p></div>
+      <div class="skill"><div class="skill-symbol">✦</div><h3>UI / UX</h3><p>Visual Foundations</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="container">
+    <div class="section-top">
+      <div><div class="kicker">03 — SELECTED WORK</div><h2>Projects that show how I learn.</h2></div>
+      <p>Academic projects that helped me practice programming, database thinking and structured problem solving.</p>
+    </div>
+
+    <div class="projects-grid">
+      <article class="project">
+        <div class="project-cover"><span class="project-no">PROJECT 01</span><span class="project-mini">Python + GUI</span></div>
+        <div class="project-body">
+          <h3>Attendance Management System</h3>
+          <p>A simple system designed to record, organize and manage student attendance efficiently.</p>
+          <div class="tags"><span class="tag">Python</span><span class="tag">GUI</span><span class="tag">Database</span></div>
+        </div>
+      </article>
+
+      <article class="project">
+        <div class="project-cover"><span class="project-no">PROJECT 02</span><span class="project-mini">SQL + Database</span></div>
+        <div class="project-body">
+          <h3>Library Management System</h3>
+          <p>A database-based project for managing books, student records, issue details and return information.</p>
+          <div class="tags"><span class="tag">SQL</span><span class="tag">Database</span><span class="tag">Management</span></div>
+        </div>
+      </article>
+
+      <article class="project">
+        <div class="project-cover"><span class="project-no">PROJECT 03</span><span class="project-mini">C + Logic</span></div>
+        <div class="project-body">
+          <h3>Student Result Management</h3>
+          <p>A project for organizing student marks, calculating results and presenting academic performance clearly.</p>
+          <div class="tags"><span class="tag">C Programming</span><span class="tag">Logic</span><span class="tag">Records</span></div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="journey">
+  <div class="container">
+    <div class="section-top">
+      <div><div class="kicker">04 — JOURNEY</div><h2>Growing one project at a time.</h2></div>
+      <p>A simple snapshot of my current academic and learning journey.</p>
+    </div>
+
+    <div class="journey">
+      <div class="journey-number"><div class="big">BCA</div><p>Building a solid foundation in computer applications, programming and technology.</p></div>
+      <div class="timeline">
+        <div class="timeline-item"><time>2026</time><div><h3>BCA Student</h3><p>Developing strong fundamentals in programming, databases and web technologies.</p></div></div>
+        <div class="timeline-item"><time>NOW</time><div><h3>Project Building</h3><p>Applying classroom concepts through mini projects and portfolio work.</p></div></div>
+        <div class="timeline-item"><time>NEXT</time><div><h3>Explore & Grow</h3><p>Looking forward to deeper development skills, real-world projects and industry exposure.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="container">
+    <div class="contact">
+      <div class="contact-grid">
+        <div>
+          <div class="kicker">05 — CONTACT</div>
+          <h2>Let's connect and build something meaningful.</h2>
+          <p>Whether it's a project, collaboration, internship opportunity or simply a conversation about technology, I'd love to connect.</p>
+          <a class="btn btn-light" href="mailto:bca2641@rajagiri.edu">Start a Conversation →</a>
+        </div>
+        <div class="contact-list">
+          <div class="contact-item">✉ &nbsp; bca2641@rajagiri.edu</div>
+          <div class="contact-item">⌖ &nbsp; Edappally, Kerala</div>
+          <div class="contact-item">⌑ &nbsp; BCA Student</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="container footer-inner">
+    <div class="footer-mark">R DHARSHIN.</div>
+    <div>© 2026 R Dharshin · Designed for a modern digital profile</div>
+  </div>
+</footer>
+
+<script>
+function toggleNav(){
+  const nav = document.querySelector('.nav');
+  nav.classList.toggle('mobile-open');
+  if(nav.classList.contains('mobile-open')){
+    nav.style.display='flex';
+    nav.style.flexDirection='column';
+    nav.style.position='absolute';
+    nav.style.top='78px';
+    nav.style.right='4%';
+    nav.style.background='#fff';
+    nav.style.padding='18px';
+    nav.style.border='1px solid #e8ecf3';
+    nav.style.borderRadius='16px';
+    nav.style.boxShadow='0 20px 45px rgba(20,35,75,.14)';
+  }else{
+    nav.style.display='';
+    nav.style.flexDirection='';
+    nav.style.position='';
+    nav.style.top='';
+    nav.style.right='';
+    nav.style.background='';
+    nav.style.padding='';
+    nav.style.border='';
+    nav.style.borderRadius='';
+    nav.style.boxShadow='';
+  }
+}
+</script>
+
+</body>
+</html>
